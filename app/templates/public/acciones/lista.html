@@ -1,0 +1,66 @@
+
+<!-- {{ miData }} -->
+{% if (miData) %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido Paterno</th> 
+                <th scope="col">Apellido Materno</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Codigo Postal</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Tipo de Sangre</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in miData %}
+            
+            <tr id="Registro_{{ paciente.id }}">
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ paciente.nombre }}</td>
+                <td>{{ paciente.apellido_paterno }}</td>
+                <td>{{ paciente.apellido_materno }}</td>
+                <td>{{ paciente.edad }}</td>
+                <td>{{ paciente.direccion }}</td>
+                <td>{{ paciente.codigo_postal }}</td>
+                <td>{{ paciente.telefono }}</td>
+                <td>{{ paciente.tipo_sangre }}</td>
+                <td>{{ paciente.fecha_nacimiento }}</td>
+            
+                <td width="300">
+                    <span style="display: flex; justify-content:space-between;">
+                        <a href="{{ url_for('viewDetallePaciente', id = paciente.id ) }}" type="button"
+                            class="btn btn-warning btn-sm" tooltip="Ver Registro">
+                            <i class="bi bi-eye"></i>
+                            Ver
+                        </a>
+                        <a href="{{ url_for('formViewUpdate', id = paciente.id ) }}" class="btn btn-info btn-sm"
+                            tooltip="Actualizar Registro">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            Actualizar
+                        </a>
+                         <a href="#" id="id_{{ paciente.id }}" onclick="eliminarPacienteJavaScript('{{ paciente.id }}');" class="btn btn-danger btn-sm" 
+                             tooltip="Eliminar Registro">
+                            <i class="bi bi-trash3"></i>
+                            Eliminar
+                        </a>
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="row mb-5">
+    <div class="col-md-12">
+        <h3 class="text-center">No hay pacientes</h3>
+    </div>
+</div>
+{% endif %}

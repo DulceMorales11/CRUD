@@ -1,0 +1,61 @@
+{% extends 'public/layout.html' %}
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block body %}
+      
+
+<section>
+    <h2>
+        <a href="/" class="left" title="Volver"><i class="bi bi-arrow-left-circle"></i></a>
+        
+
+        Detalles del Paciente
+        <hr>
+    </h2>
+
+    {% if (infoPaciente) %}
+    
+    <!-- {{ infoCarro }} -->
+
+
+    <div class="card" style="width: 25rem;">
+      <!-- {% set urlPaciente = '/static/assets/fotos_carros/' %}
+        {% if(infoPaciente.foto) %}
+          <img src="{{ urlPaciente }}{{ infoPaciente.foto }}" class="card-img-top" alt="paciente">
+        {% else %}
+          <img src="{{ urlPaciente }}sin_foto.jpg" class="card-img-top sin_foto" alt="paciente">
+        {% endif %} -->
+
+        <div class="card-body">
+          <h5 class="card-title"> <strong>{{ infoPaciente.nombre }}</strong></h5>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Apellido Paterno: <strong>{{ infoPaciente.apellido_paterno }}</strong></li>
+          <li class="list-group-item">Apellido Materno: <strong>{{ infoPaciente.apellido_materno }}</strong></li>
+          <li class="list-group-item">Edad: <strong>{{ infoPaciente.edad }}</strong></li>
+          <li class="list-group-item">Direccion: <strong>{{ infoPaciente.direccion }}</strong></li>
+          <li class="list-group-item">Codigo Postal: <strong>{{ infoPaciente.codigo_postal }}</strong></li>
+          <li class="list-group-item">Telefono: <strong>{{ infoPaciente.telefono }}</strong></li>
+          <li class="list-group-item">Tipo de sangre: <strong>{{ infoPaciente.tipo_sangre }}</strong></li>
+          <li class="list-group-item">Fecha de nacimiento: <strong>{{ infoPaciente.fecha_nacimiento}}</strong></li>
+
+        </ul>
+
+        <a href="public/acciones/view.html" download>
+          <button>Descargar archivo</button>
+        </a>
+        
+      </div>
+
+      {% else %}
+      <div class="col-12">
+          <h2 class="text-center">
+              No existe el paciente
+          </h2>
+      </div>
+{% endif %}
+
+</section>
+
+{% endblock %}

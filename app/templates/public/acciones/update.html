@@ -1,0 +1,75 @@
+{% extends 'public/layout.html' %}
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block body %}
+
+
+<section>
+    <h2>
+        <a href="/" class="left" title="Volver"><i class="bi bi-arrow-left-circle"></i></a>
+        Actualizar Información del Paciente
+        <hr>
+    </h2>
+
+    {% if (dataInfo) %}
+      <form action="{{ url_for('formActualizarPaciente', id = dataInfo.id ) }}" method="POST" class="mb-3" autocomplete="off" enctype="multipart/form-data">
+        <input type="text" class="form-control" name="id" value="{{ dataInfo.id }}" required hidden>
+        
+        <div class="row">
+            <div class="col">
+                <label for="Nombre">Nombre</label>
+                <input type="text" name="Nombre" value="{{ dataInfo.Nombre}}" class="form-control">
+            </div>
+            <div class="col">
+                <label for="Apellido_paterno">Apellido paterno</label>
+                <input type="text" name="Apellido_paterno" value="{{ dataInfo.Apellido_paterno }}" class="form-control">
+            </div>
+            <div class="col">
+                <label for="Apellido_materno">Apellido Materno</label>
+                <input type="text" name="Apellido_materno" value="{{ dataInfo.Apellido_materno }}" class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="edad">Edad</label>
+                <input type="number" name="Edad" value="{{ dataInfo.Edad }}" class="form-control">
+            </div>
+        </div>
+        <div class="col">
+            <label for="Direccion">Direccion</label>
+            <input type="text" name="Direccion"  value=" {{dataInfo.Direccion}}"class="form-control">
+        </div>
+        <div class="col">
+            <label for="Codigo_postal">Codigo Postal</label>
+            <input type="text" name="Codigo_postal"  value=" {{dataInfo.Codigo_postal}}"class="form-control">
+        </div>
+        <div class="col">
+            <label for="Telefono">Telefono</label>
+            <input type="number" name="Telefono"  value=" {{dataInfo.Telefono}}"class="form-control">
+        </div>
+        <div class="col">
+            <label for="Tipo_sangre">Tipo de Sangre</label>
+            <input type="text" name="Tipo_sangre"  value=" {{dataInfo.Tipo_sangre}}"class="form-control">
+        </div>
+        <div class="col">
+            <label for="Fecha_nacimiento">Fecha de nacimiento</label>
+            <input type="date" name="Fecha_nacimiento"  value=" {{dataInfo.Fecha_nacimiento}}"class="form-control">
+        </div>
+
+        
+        <hr>
+        <input class="button-primary mt-3 btn btn-info btn-block bold" type="submit" value="Guardar Actualización">
+    </form>
+
+      {% else %}
+      <div class="col-12">
+          <h2 class="text-center">
+              No existe el Paciente
+          </h2>
+      </div>
+{% endif %}
+
+</section>
+
+{% endblock %}

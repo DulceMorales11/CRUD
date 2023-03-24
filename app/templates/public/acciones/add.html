@@ -1,0 +1,71 @@
+{% extends 'public/layout.html' %}
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block body %}
+
+
+<section>
+    <h2>
+        <a href="/" class="left" title="Volver"><i class="bi bi-arrow-left-circle"></i></a>
+        Registrar Nuevo Paciente
+        <hr>
+    </h2>
+
+    <form action="{{ url_for('formAddPacientes') }}" method="POST" class="mb-3" autocomplete="off" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col">
+                <label for="Nombre">Nombre</label>
+                <input type="text" name="Nombre" class="form-control" required>
+            </div>
+            <div class="col">
+                <label for="Apellido_paterno">Apellido_paterno</label>
+                <input type="text" name="Apellido_paterno" class="form-control" required>
+            </div>
+            <div class="col">
+                <label for="Apellido_materno">Apellido_materno</label>
+                <input type="text" name="Apellido_materno" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Edad">Edad</label>
+                <input type="number" name="Edad" class="form-control" required>
+                
+            </div>
+            <div class="col">
+                <label for="Direccion">Direccion</label>
+                <input type="text" name="Direccion" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <label for="Codigo_postal">Codigo_Postal</label>
+                <input type="number" name="Codigo_postal" class="form-control" required>
+            </div>
+
+            <div class="col">
+                <label for="Telefono">Telefono</label>
+                <input type="text" name="Telefono" class="form-control" required>
+            </div>
+
+            <div class="col">
+                <label for="Tipo_sangre">Tipo de Sangre</label>
+                <input type="text" name="Tipo_sangre" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="col">
+            <label for="Fecha_nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="Fecha_nacimiento" name="Fecha_nacimiento" class="form-control" required>
+        </div>
+
+        
+        <hr>
+
+        <input class="button-primary mt-3 btn btn-info btn-block bold" type="submit" value="Guardar Registro">
+    </form>
+</section>
+
+{% endblock %}
